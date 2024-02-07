@@ -12,7 +12,9 @@ def clientes(request):
     return render(request,'apptienda/clientes.html',contexto)
 
 def mascotas(request):
-    return render(request,'apptienda/mascotas.html')
+    contexto={'mascotas':Mascota.objects.all()}
+    return render(request,'apptienda/mascotas.html',contexto)
 
 def productos(request):
-    return render(request,'apptienda/productos.html')
+    contexto={'productos':Producto.objects.all()}
+    return render(request,'apptienda/productos.html',contexto)
