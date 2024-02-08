@@ -2,6 +2,7 @@ from django import forms
 
 
 class ClienteForms(forms.Form):
+    nombre=forms.CharField(max_length=50, required=True)
     apellido=forms.CharField(max_length=50, required=True)
     mascota=forms.CharField(max_length=50, required=True)
     telefono=forms.IntegerField( required=True)
@@ -18,4 +19,4 @@ class ProductoForms(forms.Form):
     nombre_producto=forms.CharField(max_length=50, required=True)
     categoria=forms.CharField(max_length=50, required=True)
     tipo_de_animal=forms.CharField(max_length=50, required=True)
-    disponibilidad=forms.BooleanField(required=True)
+    disponibilidad=forms.BooleanField(required=False)

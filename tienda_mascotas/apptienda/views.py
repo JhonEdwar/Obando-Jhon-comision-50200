@@ -74,3 +74,17 @@ def productosForm(request):
         productoForm= ProductoForms()
 
     return render(request,'apptienda/productosForm.html',{'producto_form':productoForm})
+
+
+def buscar(request):
+    return render(request,'apptienda/buscar.html')
+
+
+def buscarProductos(request):
+    if request.GET["buscar"]:
+        patron=request.GET["buscar"]
+        productos=Producto.objects.filter(nombre_producto__icontains=patron)
+        contexto={'productos':productos}
+        return render(request,'apptienda/productos.html',contexto)
+    else:
+        return HttpResponse('no se ingresaron patrones de búsqueda')
