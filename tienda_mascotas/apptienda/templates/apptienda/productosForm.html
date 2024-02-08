@@ -1,7 +1,7 @@
 {% extends 'apptienda/home.html' %}
 
 {% block title %}
-    <h1 class="mb-5">Agregar nueva mascota</h1>
+    <h1 class="mb-5">Agregar nuevo producto</h1>
 {% endblock title %}
 
 {% block contenido %}
@@ -9,7 +9,7 @@
     <form action="" method="post">
         {% csrf_token %}
         <table>
-            {{ mascota_form.as_table }}
+            {{ producto_form.as_table }}
         </table>
         <input type="submit" value="enviar" style="display: block;">
     </form>

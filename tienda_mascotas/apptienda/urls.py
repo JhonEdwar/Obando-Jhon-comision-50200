@@ -7,7 +7,8 @@ urlpatterns = [
     path('mascotas/', mascotas, name='mascotas'),
     path('productos/', productos, name='productos'),
     #Rutas de formulario
+    path('clientes_form/', clientesForm, name='clientes_form'),
     path('mascotas_form/', mascotasForm, name='curso_form'),
-
+    path('productos_form/', productosForm, name='productos_form'),
 
 ]
