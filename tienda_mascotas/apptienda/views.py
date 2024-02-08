@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 
 # Create your views here.
@@ -18,3 +19,7 @@ def mascotas(request):
 def productos(request):
     contexto={'productos':Producto.objects.all()}
     return render(request,'apptienda/productos.html',contexto)
+
+def mascotasForm(request):
+    mascotaForm=MascotaForms()
+    return render(request,'apptienda/mascotasForm.html',{'mascota_form':mascotaForm})
