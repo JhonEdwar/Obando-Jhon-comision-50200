@@ -27,9 +27,18 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'clientes' %}">Clientes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'mascotas' %}">Mascotas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'productos' %}">Productos</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'clientes' %}">Clientes</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'mascotas' %}">Mascotas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'productos' %}">Productos</a></li>
+
+                            <p style="color:green">Hola {{user.username}}!</p>
+                            <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'logout' %}">Logout</a></li>
+
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-success" href="{% url 'registro' %}">Register</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

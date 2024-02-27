@@ -56,7 +56,6 @@ class ProductosDelete(DeleteView):
     model=Producto
     success_url=reverse_lazy('productos')
 
-
 # -------------------------sección mascotas
 
 class MascotasList(ListView):
@@ -98,17 +97,28 @@ def buscarProductos(request):
     
 def login_request(request):
     if request.method == 'POST':
-        miForm= AuthenticationForm(request.POST)
-        if productoForm.is_valid():
-            usuario=miForm.cleaned_data.get('username')
-            password=miForm.cleaned_data.get('password')
-            user=authenticate(username=usuario, password=password)
-            if user is not None:
-                login(request,user)
-                return redirect(reverse_lazy('home'))
-            else:
-                return redirect(reverse_lazy('login'))
+        usuario=request.POST['username']
+        password=request.POST['password']
+        user=authenticate(request,username=usuario, password=password)
+        if user is not None:
+            login(request,user)
+            return redirect(reverse_lazy('home'))
+        else:
+            return redirect(reverse_lazy('login'))
 
     else:
         miForm= AuthenticationForm()
-    return render(request,'apptienda/login.html',{'producto_form':miForm})
+    return render(request,'apptienda/login.html',{'form':miForm})
+
+
+def register(request):
+    if request.method == 'POST':
+        miForm= RegistroForm(request.POST)
+        if miForm.is_valid():
+            usuario=miForm.cleaned_data.get('username')
+            # password=miForm.cleaned_data.get('password')
+            miForm.save()
+            return redirect(reverse_lazy('home'))
+    else:
+        miForm= RegistroForm()
+    return render(request,'apptienda/registro.html',{'form':miForm})
