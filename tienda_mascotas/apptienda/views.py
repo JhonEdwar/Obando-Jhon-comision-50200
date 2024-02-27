@@ -1,80 +1,83 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import *
+from django.urls import reverse_lazy
+from django.views.generic import ListView
+from django.views.generic import CreateView
+from django.views.generic import UpdateView
+from django.views.generic import DeleteView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
 
 
-# Create your views here.
+# home
 def home(request):
     return render(request,'apptienda/home.html')
 
-def clientes(request):
-    contexto={'clientes': Cliente.objects.all()}
-    return render(request,'apptienda/clientes.html',contexto)
 
-def mascotas(request):
-    contexto={'mascotas':Mascota.objects.all()}
-    return render(request,'apptienda/mascotas.html',contexto)
-
-def productos(request):
-    contexto={'productos':Producto.objects.all()}
-    return render(request,'apptienda/productos.html',contexto)
+#_______________________________-clientes
 
 
-def clientesForm(request):
-    if request.method == 'POST':
-        clienteForm= ClienteForms(request.POST)
-        if clienteForm.is_valid():
-            cliente_nombre=clienteForm.cleaned_data.get('nombre')
-            cliente_apellido=clienteForm.cleaned_data.get('apellido')
-            cliente_mascota=clienteForm.cleaned_data.get('mascota')
-            cliente_telefono=clienteForm.cleaned_data.get('telefono')
-            cliente_email=clienteForm.cleaned_data.get('email')
-            cliente_compra=clienteForm.cleaned_data.get('ultima_compra')
-            ClienteSave=Cliente(nombre=cliente_nombre,apellido=cliente_apellido,mascota=cliente_mascota,telefono=cliente_telefono,email=cliente_email,ultima_compra=cliente_compra)
-            ClienteSave.save()
-            return render(request,'apptienda/home.html')
-    else:
-        clienteForm= ClienteForms()
+class ClientesList(ListView):
+    model=Cliente
+    
+class ClientesCreate(CreateView):
+    model=Cliente
+    fields=['nombre','apellido','mascota','telefono','email','fecha_ult_compra']
+    success_url=reverse_lazy('clientes')
 
-    return render(request,'apptienda/clientesForm.html',{'cliente_form':clienteForm})
+class ClientesUpdate(UpdateView):
+    model=Cliente
+    fields=['nombre','apellido','mascota','telefono','email','fecha_ult_compra']
+    success_url=reverse_lazy('clientes')
 
+class ClientesDelete(DeleteView):
+    model=Cliente
+    success_url=reverse_lazy('clientes')
 
 
+# -------------------------sección productos
 
-def mascotasForm(request):
-    if request.method == 'POST':
-        mascotaForm= MascotaForms(request.POST)
-        if mascotaForm.is_valid():
-            mascota_tipo=mascotaForm.cleaned_data.get('tipo')
-            mascota_raza=mascotaForm.cleaned_data.get('raza')
-            mascota_nombre=mascotaForm.cleaned_data.get('nombre')
-            mascota_edad=mascotaForm.cleaned_data.get('edad')
-            mascotasave=Mascota(tipo=mascota_tipo,raza=mascota_raza,nombre=mascota_nombre,edad=mascota_edad)
-            mascotasave.save()
-            return render(request,'apptienda/home.html')
-    else:
-        mascotaForm=MascotaForms()
+class ProductosList(ListView):
+    model=Producto
+    
+class ProductosCreate(CreateView):
+    model=Producto
+    fields=['nombre_producto','categoria','tipo_de_animal','disponibilidad']
+    success_url=reverse_lazy('productos')
 
-    return render(request,'apptienda/mascotasForm.html',{'mascota_form':mascotaForm})
+class ProductosUpdate(UpdateView):
+    model=Producto
+    fields=['nombre_producto','categoria','tipo_de_animal','disponibilidad']
+    success_url=reverse_lazy('productos')
+
+class ProductosDelete(DeleteView):
+    model=Producto
+    success_url=reverse_lazy('productos')
 
 
-def productosForm(request):
-    if request.method == 'POST':
-        productoForm= ProductoForms(request.POST)
-        if productoForm.is_valid():
-            producto_nombre=productoForm.cleaned_data.get('nombre_producto')
-            producto_categoria=productoForm.cleaned_data.get('categoria')
-            producto_animal=productoForm.cleaned_data.get('tipo_de_animal')
-            producto_disponibilidad=productoForm.cleaned_data.get('disponibilidad')
-            productoSave=Producto(nombre_producto=producto_nombre,categoria=producto_categoria,tipo_de_animal=producto_animal,disponibilidad=producto_disponibilidad)
-            productoSave.save()
-            return render(request,'apptienda/home.html')
-    else:
-        productoForm= ProductoForms()
+# -------------------------sección mascotas
 
-    return render(request,'apptienda/productosForm.html',{'producto_form':productoForm})
+class MascotasList(ListView):
+    model=Mascota
+    
+class MascotasCreate(CreateView):
+    model=Mascota
+    fields=['tipo','raza','nombre','edad']
+    success_url=reverse_lazy('mascotas')
 
+class MascotasUpdate(UpdateView):
+    model=Mascota
+    fields=['tipo','raza','nombre','edad']
+    success_url=reverse_lazy('mascotas')
+
+class MascotasDelete(DeleteView):
+    model=Mascota
+    success_url=reverse_lazy('mascotas')
+
+
+# -------------------------sección búsqueda
 
 def buscar(request):
     return render(request,'apptienda/buscar.html')
@@ -88,3 +91,24 @@ def buscarProductos(request):
         return render(request,'apptienda/productos.html',contexto)
     else:
         return HttpResponse('no se ingresaron patrones de búsqueda')
+    
+
+#----------------------------------- login, logout y registro
+    
+    
+def login_request(request):
+    if request.method == 'POST':
+        miForm= AuthenticationForm(request.POST)
+        if productoForm.is_valid():
+            usuario=miForm.cleaned_data.get('username')
+            password=miForm.cleaned_data.get('password')
+            user=authenticate(username=usuario, password=password)
+            if user is not None:
+                login(request,user)
+                return redirect(reverse_lazy('home'))
+            else:
+                return redirect(reverse_lazy('login'))
+
+    else:
+        miForm= AuthenticationForm()
+    return render(request,'apptienda/login.html',{'producto_form':miForm})

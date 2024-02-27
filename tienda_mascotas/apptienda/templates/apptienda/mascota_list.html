@@ -1,0 +1,65 @@
+{% extends 'apptienda/home.html' %}
+
+{% block title %}
+    <h1 class="masthead-heading mb-0">Mascotas</h1>
+{% endblock title %}
+
+{% block contenido %}
+    <table>
+        <tr>
+            <td width="200"><h2>Mascotas</h2></td>
+            <td>
+                <a
+                href="{% url 'mascota_create' %}"
+                class="btn btn-primary btn-sm"
+                ><i class="fa fa-plus fa-lg" title="Crear"> </i>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tipo</th>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in mascota_list %}
+                <tr>
+                    <td>{{m.id}}</td>
+                    <td>{{m.tipo}}</td>
+                    <td>{{m.nombre}}</td>
+                    <td>{{m.raza}}</td>
+                    <td>{{m.edad}}</td>
+                    <td>
+                        <a
+                          href="{% url 'mascota_update' m.id %}"
+                          class="btn btn-primary"
+                          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                          ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                        </a>
+                        <a
+                          href="{% url 'mascota_delete' m.id %}"
+                          class="btn btn-danger"
+                          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                          ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                        </a>                
+                      </td>
+
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock contenido %}
+
+
+

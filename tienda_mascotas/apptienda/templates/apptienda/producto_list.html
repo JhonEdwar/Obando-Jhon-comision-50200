@@ -1,0 +1,66 @@
+{% extends 'apptienda/home.html' %}
+
+{% block title %}
+    <h1 class="masthead-heading mb-0">Mascotas</h1>
+{% endblock title %}
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td width="200"><h2>Productos</h2></td>
+        <td>
+            <a
+            href="{% url 'producto_create' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="Crear"> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Producto</th>
+                <th>Cateogria</th>
+                <th>Tipo de mascota</th>
+                <th>Disponibilidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in producto_list %}
+                <tr>
+                    <td>{{p.id}}</td>
+                    <td>{{p.nombre_producto}}</td>
+                    <td>{{p.categoria}}</td>
+                    <td>{{p.tipo_de_animal}}</td>
+                    <td>{{p.disponibilidad}}</td>
+                    <td>
+                        <a
+                          href="{% url 'producto_update' p.id %}"
+                          class="btn btn-primary"
+                          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                          ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                        </a>
+                        <a
+                          href="{% url 'producto_delete' p.id %}"
+                          class="btn btn-danger"
+                          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                          ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                        </a>                
+                      </td>
+          
+
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock contenido %}
+
+

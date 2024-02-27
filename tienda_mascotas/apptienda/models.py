@@ -7,7 +7,7 @@ class Cliente(models.Model):
     mascota= models.CharField(max_length=50)
     telefono=models.IntegerField()
     email = models.EmailField()
-    ultima_compra = models.DateField()
+    fecha_ult_compra = models.DateField()
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"

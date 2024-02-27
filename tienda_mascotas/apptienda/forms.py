@@ -7,7 +7,7 @@ class ClienteForms(forms.Form):
     mascota=forms.CharField(max_length=50, required=True)
     telefono=forms.IntegerField( required=True)
     email=forms.EmailField(required=True)
-    ultima_compra=forms.DateField(required=True)
+    fecha_ult_compra=forms.DateField(required=False)
 
 class MascotaForms(forms.Form):
     tipo=forms.CharField(max_length=50, required=True)
