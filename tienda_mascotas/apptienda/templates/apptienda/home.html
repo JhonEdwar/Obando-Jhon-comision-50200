@@ -33,7 +33,10 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'productos' %}">Productos</a></li>
 
                             <p style="color:green">Hola {{user.username}}!</p>
+                            <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'editar_perfil' %}">perfil</a></li>
+
                             <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'logout' %}">Logout</a></li>
+
 
                         {% else %}
                             <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'login' %}">Login</a></li>

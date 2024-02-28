@@ -31,3 +31,16 @@ class RegistroForm(UserCreationForm):
     class Meta:
         model=User
         fields=['username','email','password1','password2']
+
+
+
+class UserEditForm(UserCreationForm):
+    email=forms.EmailField(max_length=50, required=True)
+    password1=forms.CharField(label='Contraseña', max_length=50, required=True, widget=forms.PasswordInput)
+    password2=forms.CharField(label='Confirmar contraseña', max_length=50, required=True,widget=forms.PasswordInput)
+    first_name=forms.CharField(label='Nombre',max_length=50, required=True)
+    last_name=forms.CharField(label='Apellido',max_length=50, required=True)
+    
+    class Meta:
+        model=User
+        fields=['email','password1','password2','first_name','last_name']

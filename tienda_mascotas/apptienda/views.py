@@ -116,9 +116,36 @@ def register(request):
         miForm= RegistroForm(request.POST)
         if miForm.is_valid():
             usuario=miForm.cleaned_data.get('username')
-            # password=miForm.cleaned_data.get('password')
             miForm.save()
             return redirect(reverse_lazy('home'))
     else:
         miForm= RegistroForm()
     return render(request,'apptienda/registro.html',{'form':miForm})
+
+@login_required
+def logout_sesion(request):
+    logout(request)    
+    return redirect(reverse_lazy('home'))
+
+
+# ----------------------------------------editar perfil
+
+@login_required
+def editar_perfil(request):
+    usuario= request.user
+    if request.method == 'POST':
+        miForm= UserEditForm(request.POST)
+        if miForm.is_valid():
+            informacion=miForm.cleaned_data
+            user = User.objects.get(username=usuario)
+            user.email = informacion['email']
+            user.first_name = informacion['first_name']
+            user.last_name = informacion['last_name']
+            user.set_password(informacion['password1'])
+            user.save()
+            return render(request, "aplicacion/home.html")
+    else:    
+        miForm = UserEditForm(instance=usuario)
+    return render(request,'apptienda/editarPerfil.html',{'form':miForm})
+
+

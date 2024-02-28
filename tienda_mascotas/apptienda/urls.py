@@ -32,6 +32,13 @@ urlpatterns = [
     #----------------------------------- login, logout y registro
     path('login/', login_request, name='login'),
     path('register/', register, name='registro'),
-    path('logout/', LogoutView.as_view(template_name="admin/logout.html"), name='logout'),
+    # path('logout/', LogoutView.as_view(template_name="admin/logout.html"), name='logout'),
+    path('logout/', logout_sesion, name='logout'),
+
+    
+    #----------------------------------- editar perfil
+    path('editar_perfil/', editar_perfil, name='editar_perfil'),
+
+
 
 ]
