@@ -9,7 +9,8 @@ from django.views.generic import UpdateView
 from django.views.generic import DeleteView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # home
 def home(request):
@@ -19,69 +20,69 @@ def home(request):
 #_______________________________-clientes
 
 
-class ClientesList(ListView):
+class ClientesList(LoginRequiredMixin,ListView):
     model=Cliente
     
-class ClientesCreate(CreateView):
+class ClientesCreate(LoginRequiredMixin,CreateView):
     model=Cliente
     fields=['nombre','apellido','mascota','telefono','email','fecha_ult_compra']
     success_url=reverse_lazy('clientes')
 
-class ClientesUpdate(UpdateView):
+class ClientesUpdate(LoginRequiredMixin,UpdateView):
     model=Cliente
     fields=['nombre','apellido','mascota','telefono','email','fecha_ult_compra']
     success_url=reverse_lazy('clientes')
 
-class ClientesDelete(DeleteView):
+class ClientesDelete(LoginRequiredMixin,DeleteView):
     model=Cliente
     success_url=reverse_lazy('clientes')
 
 
 # -------------------------sección productos
 
-class ProductosList(ListView):
+class ProductosList(LoginRequiredMixin,ListView):
     model=Producto
     
-class ProductosCreate(CreateView):
+class ProductosCreate(LoginRequiredMixin,CreateView):
     model=Producto
     fields=['nombre_producto','categoria','tipo_de_animal','disponibilidad']
     success_url=reverse_lazy('productos')
 
-class ProductosUpdate(UpdateView):
+class ProductosUpdate(LoginRequiredMixin,UpdateView):
     model=Producto
     fields=['nombre_producto','categoria','tipo_de_animal','disponibilidad']
     success_url=reverse_lazy('productos')
 
-class ProductosDelete(DeleteView):
+class ProductosDelete(LoginRequiredMixin,DeleteView):
     model=Producto
     success_url=reverse_lazy('productos')
 
 # -------------------------sección mascotas
 
-class MascotasList(ListView):
+class MascotasList(LoginRequiredMixin,ListView):
     model=Mascota
     
-class MascotasCreate(CreateView):
+class MascotasCreate(LoginRequiredMixin,CreateView):
     model=Mascota
     fields=['tipo','raza','nombre','edad']
     success_url=reverse_lazy('mascotas')
 
-class MascotasUpdate(UpdateView):
+class MascotasUpdate(LoginRequiredMixin,UpdateView):
     model=Mascota
     fields=['tipo','raza','nombre','edad']
     success_url=reverse_lazy('mascotas')
 
-class MascotasDelete(DeleteView):
+class MascotasDelete(LoginRequiredMixin,DeleteView):
     model=Mascota
     success_url=reverse_lazy('mascotas')
 
 
 # -------------------------sección búsqueda
-
+@login_required
 def buscar(request):
     return render(request,'apptienda/buscar.html')
 
-
+@login_required
 def buscarProductos(request):
     if request.GET["buscar"]:
         patron=request.GET["buscar"]
@@ -105,7 +106,6 @@ def login_request(request):
             return redirect(reverse_lazy('home'))
         else:
             return redirect(reverse_lazy('login'))
-
     else:
         miForm= AuthenticationForm()
     return render(request,'apptienda/login.html',{'form':miForm})
