@@ -102,6 +102,15 @@ def login_request(request):
         password=request.POST['password']
         user=authenticate(request,username=usuario, password=password)
         if user is not None:
+
+            #____ Avatar
+            try:
+                avatar = Avatar.objects.get(user=request.user.id).imagen.url
+            except:
+                avatar = "/media/avatares/default.png"
+            finally:
+                request.session["avatar"] = avatar
+
             login(request,user)
             return redirect(reverse_lazy('home'))
         else:
@@ -148,4 +157,29 @@ def editar_perfil(request):
         miForm = UserEditForm(instance=usuario)
     return render(request,'apptienda/editarPerfil.html',{'form':miForm})
 
+
+#----------------------------- aAvatar
+@login_required
+def agregarAvatar(request):
+    if request.method == "POST":
+        form = AvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            usuario = User.objects.get(username=request.user)
+
+            avatarViejo = Avatar.objects.filter(user=usuario)
+            if len(avatarViejo) > 0:
+                for i in range(len(avatarViejo)):
+                    avatarViejo[i].delete()
+
+            avatar = Avatar(user=usuario, imagen=form.cleaned_data['imagen'])
+            avatar.save()
+
+            imagen = Avatar.objects.get(user=request.user.id).imagen.url
+            request.session["avatar"] = imagen
+            return render(request, "apptienda/home.html")
+
+    else:    
+        form = AvatarForm()
+
+    return render(request, "apptienda/agregarAvatar.html", {"form": form })     
 

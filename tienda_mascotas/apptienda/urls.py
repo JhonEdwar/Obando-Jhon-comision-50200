@@ -38,6 +38,8 @@ urlpatterns = [
     
     #----------------------------------- editar perfil
     path('editar_perfil/', editar_perfil, name='editar_perfil'),
+    path('agregar_avatar/', agregarAvatar, name="agregar_avatar"),
+
 
 
 

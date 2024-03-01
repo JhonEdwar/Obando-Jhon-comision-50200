@@ -1,0 +1,17 @@
+{% extends 'apptienda/home.html' %}
+
+{% block title %}
+    <h1 class="mb-5">Avatar</h1>
+{% endblock title %}
+
+{% block contenido %}
+
+    <form action="" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <table>
+            {{form.as_table }}
+        </table>
+        <input type="submit" value="actualizar" style="display: block;">
+    </form>
+
+{% endblock contenido %}
