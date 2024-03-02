@@ -22,7 +22,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
             <div class="container px-5">
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand" href="{% url 'home' %}">Super mascotas</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
@@ -32,16 +32,21 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'mascotas' %}">Mascotas</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'productos' %}">Productos</a></li>
 
-                            <p style="color:green">Hola {{user.username}}!</p>
-                            <div class="text-center">
+                            <li class="nav-item"><p class="nav-link" style="color:#FF8AA8">| Hola {{user.username}}</p></li>
+                                            
+                            <div class="text-center avatar">
                                 <a  href="{% url 'agregar_avatar' %}" ><img src="{{ request.session.avatar }}" height="40px" weight="40px"/></a>
-                            </div>                    
-                            <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'editar_perfil' %}">perfil</a></li>
-                            <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'logout' %}">Logout</a></li>
+                            </div>  
+                            <li class="nav-item btn-profile" ><a class="nav-link btn btn-primary" href="{% url 'editar_perfil' %}">perfil</a></li>
+                         
+                           
+                            <li class="nav-item btn-profile"><a class="nav-link btn btn-outline-light btn-sm" href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</a></li>
+                          
+                          
 
                         {% else %}
-                            <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'login' %}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link btn btn-success" href="{% url 'registro' %}">Register</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-outline-light" href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-primary" href="{% url 'registro' %}">Register</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -55,7 +60,7 @@
                     <h1 class="masthead-heading mb-0">Tienda de mascotas</h1>
                     <h2 class="masthead-subheading mb-0">Lo mejor para tu amigo</h2>
                     {% endblock title %}
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">ver más</a>
+                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'productos' %}">ver más</a>
                 </div>
             </div>
             <div class="bg-circle-1 bg-circle"></div>

@@ -1,16 +1,29 @@
 # Nombre de Proyecto: Tienda para mascotas
 # Alumno: Jhon Edwar Obando 
-# Fecha: 07/02/2023
-# Versión: Pre-entregable 3 
+# Fecha: 29/02/2023
+# Versión: final
 
-# Aplicacion que permite administrar una tienda enfocada en productos para mascotas.
+Ingreso administracion:
+user: admin
+password: 12345678
+
+Usuario general:
+user: Edwar
+password: Edwar12345!
+
+
+# Aplicacion que permite administrar una tienda enfocada en productos para mascotas,
+el sistema se enfoca en guardar los datos de un cliente, 
+los datos de los animales tipo perro o gato 
+y los diferentes productos para estos tipos de mascotas.
 
 - Los modelos que presenta esta aplicacion son:
   - Clientes
   - Mascotas
   - Productos
 
-Orden de prueba de la aplicacion y funcionalidades permitidas:
+ingreso a la app:
+localhost:8000/apptienda/
 ___________________________________________
 Consulta de información a travez del menú o los siguientes enlaces:
 
