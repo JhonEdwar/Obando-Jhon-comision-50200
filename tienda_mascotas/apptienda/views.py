@@ -78,22 +78,22 @@ class MascotasDelete(LoginRequiredMixin,DeleteView):
 
 # -------------------------sección medicamentos
 
-class MedicinaList(LoginRequiredMixin,ListView):
-    model=Medicina
+class MedicamentoList(LoginRequiredMixin,ListView):
+    model=Medicamento
     
-class MedicinaCreate(LoginRequiredMixin,CreateView):
-    model=Medicina
-    fields=['nombre_medicina','disponibilidad']
-    success_url=reverse_lazy('medicinas')
+class MedicamentoCreate(LoginRequiredMixin,CreateView):
+    model=Medicamento
+    fields=['nombre_medicamento','disponibilidad']
+    success_url=reverse_lazy('medicamentos')
 
-class MedicinaUpdate(LoginRequiredMixin,UpdateView):
-    model=Medicina
-    fields=['nombre_medicina','disponibilidad']
-    success_url=reverse_lazy('medicinas')
+class MedicamentoUpdate(LoginRequiredMixin,UpdateView):
+    model=Medicamento
+    fields=['nombre_medicamento','disponibilidad']
+    success_url=reverse_lazy('medicamentos')
 
-class MedicinaDelete(LoginRequiredMixin,DeleteView):
-    model=Medicina
-    success_url=reverse_lazy('medicinas')
+class MedicamentoDelete(LoginRequiredMixin,DeleteView):
+    model=Medicamento
+    success_url=reverse_lazy('medicamentos')
 
 
 

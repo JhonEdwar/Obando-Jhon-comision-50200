@@ -5,4 +5,4 @@ from .models import *
 admin.site.register(Cliente)
 admin.site.register(Mascota)
 admin.site.register(Producto)
-admin.site.register(Medicina)
+admin.site.register(Medicamento)

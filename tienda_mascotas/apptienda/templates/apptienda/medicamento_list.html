@@ -10,7 +10,7 @@
             <td width="200"><h2>Medicamento</h2></td>
             <td>
                 <a
-                href="{% url 'medicina_create' %}"
+                href="{% url 'medicamento_create' %}"
                 class="btn btn-primary btn-sm"
                 ><i class="fa fa-plus fa-lg" title="Crear"> </i>
                 </a>
@@ -31,22 +31,22 @@
             </tr>
         </thead>
         <tbody>
-            {% for m in medicina_list %}
+            {% for m in medicamento_list %}
                 <tr>
                     <td>{{m.id}}</td>
-                    <td>{{m.nombre_medicina}}</td>
+                    <td>{{m.nombre_medicamento}}</td>
                     {% comment %} <td>{{m.descripcion}}</td> {% endcomment %}
                     {% comment %} <td>{{m.tipo_de_animal}}</td> {% endcomment %}
                     <td>{{m.disponibilidad}}</td>
                     <td>
                         <a
-                          href="{% url 'medicina_update' m.id %}"
+                          href="{% url 'medicamento_update' m.id %}"
                           class="btn btn-primary"
                           style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                           ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
                         </a>
                         <a
-                          href="{% url 'medicina_delete' m.id %}"
+                          href="{% url 'medicamento_delete' m.id %}"
                           class="btn btn-danger"
                           style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                           ><i class="fa fa-trash fa-sm" title="Delete Record"></i>

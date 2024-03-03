@@ -23,8 +23,8 @@ class ProductoForms(forms.Form):
     tipo_de_animal=forms.CharField(max_length=50, required=True)
     disponibilidad=forms.BooleanField(required=False)
 
-class MedicinaForms(forms.Form):
-    nombre_medicina = forms.CharField(max_length=50)
+class MedicamentoForms(forms.Form):
+    nombre_medicamento = forms.CharField(max_length=50)
     disponibilidad= forms.BooleanField(required=False)
 
 

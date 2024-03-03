@@ -26,10 +26,10 @@ urlpatterns = [
     path('producto_delete/<int:pk>', ProductosDelete.as_view(), name='producto_delete'),
 
     #___________________medicamentos
-    path('medicinas/', MedicinaList.as_view(), name='medicinas'),
-    path('medicina_create/', MedicinaCreate.as_view(), name='medicina_create'),
-    path('medicina_update/<int:pk>', MedicinaUpdate.as_view(), name='medicina_update'),
-    path('medicina_delete/<int:pk>', MedicinaDelete.as_view(), name='medicina_delete'),
+    path('medicamentos/', MedicamentoList.as_view(), name='medicamentos'),
+    path('medicamento_create/', MedicamentoCreate.as_view(), name='medicamento_create'),
+    path('medicamento_update/<int:pk>', MedicamentoUpdate.as_view(), name='medicamento_update'),
+    path('medicamento_delete/<int:pk>', MedicamentoDelete.as_view(), name='medicamento_delete'),
 
     #Rutas de búsqueda
     path('buscar/', buscar, name='buscar'),  

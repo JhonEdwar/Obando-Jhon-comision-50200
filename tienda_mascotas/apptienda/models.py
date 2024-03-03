@@ -34,12 +34,12 @@ class Producto(models.Model):
         return f"{self.nombre_producto}"
     
 
-class Medicina(models.Model):
-    nombre_medicina = models.CharField(max_length=50)
+class Medicamento(models.Model):
+    nombre_medicamento = models.CharField(max_length=50)
     disponibilidad= models.BooleanField()
 
     def __str__(self):
-        return f"{self.nombre_medicina}"
+        return f"{self.nombre_medicamento}"
     
 
 class Avatar(models.Model):
