@@ -1,0 +1,18 @@
+{% extends 'apptienda/home.html' %}
+
+{% block title %}
+    <h1 class="mb-5">Agregar nuevo medicamento</h1>
+{% endblock title %}
+
+{% block contenido %}
+<h2> Medicamento </h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="enviar" style="display: block;">
+    </form>
+
+{% endblock contenido %}

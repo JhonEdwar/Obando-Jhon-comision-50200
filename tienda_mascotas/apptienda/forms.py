@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+
 class ClienteForms(forms.Form):
     nombre=forms.CharField(max_length=50, required=True)
     apellido=forms.CharField(max_length=50, required=True)
@@ -21,6 +22,11 @@ class ProductoForms(forms.Form):
     categoria=forms.CharField(max_length=50, required=True)
     tipo_de_animal=forms.CharField(max_length=50, required=True)
     disponibilidad=forms.BooleanField(required=False)
+
+class MedicinaForms(forms.Form):
+    nombre_medicina = forms.CharField(max_length=50)
+    disponibilidad= forms.BooleanField(required=False)
+
 
 
 class RegistroForm(UserCreationForm):

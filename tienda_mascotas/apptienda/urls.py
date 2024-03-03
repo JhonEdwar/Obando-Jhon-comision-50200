@@ -25,6 +25,12 @@ urlpatterns = [
     path('producto_update/<int:pk>', ProductosUpdate.as_view(), name='producto_update'),
     path('producto_delete/<int:pk>', ProductosDelete.as_view(), name='producto_delete'),
 
+    #___________________medicamentos
+    path('medicinas/', MedicinaList.as_view(), name='medicinas'),
+    path('medicina_create/', MedicinaCreate.as_view(), name='medicina_create'),
+    path('medicina_update/<int:pk>', MedicinaUpdate.as_view(), name='medicina_update'),
+    path('medicina_delete/<int:pk>', MedicinaDelete.as_view(), name='medicina_delete'),
+
     #Rutas de búsqueda
     path('buscar/', buscar, name='buscar'),  
     path('buscar_productos/', buscarProductos, name='buscar_productos'),

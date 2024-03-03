@@ -76,6 +76,26 @@ class MascotasDelete(LoginRequiredMixin,DeleteView):
     model=Mascota
     success_url=reverse_lazy('mascotas')
 
+# -------------------------sección medicamentos
+
+class MedicinaList(LoginRequiredMixin,ListView):
+    model=Medicina
+    
+class MedicinaCreate(LoginRequiredMixin,CreateView):
+    model=Medicina
+    fields=['nombre_medicina','disponibilidad']
+    success_url=reverse_lazy('medicinas')
+
+class MedicinaUpdate(LoginRequiredMixin,UpdateView):
+    model=Medicina
+    fields=['nombre_medicina','disponibilidad']
+    success_url=reverse_lazy('medicinas')
+
+class MedicinaDelete(LoginRequiredMixin,DeleteView):
+    model=Medicina
+    success_url=reverse_lazy('medicinas')
+
+
 
 # -------------------------sección búsqueda
 @login_required
