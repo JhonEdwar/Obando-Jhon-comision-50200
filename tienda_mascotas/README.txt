@@ -8,6 +8,7 @@ Enlace a casos de test:
 https://docs.google.com/spreadsheets/d/1R6zH1F7rgmF-7OXZ3KIu0Hu4ojq2Jv-ZuOhhToX2BRc/edit?usp=sharing
 
 Enlace a video de navegación:
+https://drive.google.com/file/d/12D8xFLDHpdv6DedK5YhCMaFC1orPTcsq/view?usp=sharing
 
 
 
