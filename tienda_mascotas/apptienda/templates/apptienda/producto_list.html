@@ -13,7 +13,13 @@
             <a
             href="{% url 'producto_create' %}"
             class="btn btn-primary btn-sm"
+            style="margin-right:20px"
             ><i class="fa fa-plus fa-lg" title="Crear"> </i>
+            </a>
+            <a
+            href="{% url 'buscar' %}"
+            class="btn btn-outline-primary btn-sm"
+            ><i class="fa fa-search fa-lg" title="Buscar" style="padding-right:10px"></i>Buscar productos
             </a>
         </td>
     </tr>
@@ -25,7 +31,7 @@
             <tr>
                 <th>Id</th>
                 <th>Producto</th>
-                <th>Cateogria</th>
+                <th>Categoria</th>
                 <th>Tipo de mascota</th>
                 <th>Disponibilidad</th>
                 <th>Acciones</th>

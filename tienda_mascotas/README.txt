@@ -2,6 +2,14 @@
 # Alumno: Jhon Edwar Obando 
 # Fecha: 29/02/2023
 # Versión: final
+#comisión: 50200
+
+Enlace a casos de test: 
+https://docs.google.com/spreadsheets/d/1R6zH1F7rgmF-7OXZ3KIu0Hu4ojq2Jv-ZuOhhToX2BRc/edit?usp=sharing
+
+Enlace a video de navegación:
+
+
 
 Ingreso administracion:
 user: admin

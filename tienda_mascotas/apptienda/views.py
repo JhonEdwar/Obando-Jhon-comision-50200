@@ -16,6 +16,10 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request,'apptienda/home.html')
 
+# acerca de mi
+def acerca_de(request):
+    return render(request,'apptienda/acerca_de.html')
+
 
 #_______________________________-clientes
 
@@ -107,8 +111,8 @@ def buscarProductos(request):
     if request.GET["buscar"]:
         patron=request.GET["buscar"]
         productos=Producto.objects.filter(nombre_producto__icontains=patron)
-        contexto={'productos':productos}
-        return render(request,'apptienda/productos.html',contexto)
+        contexto={'producto_list':productos}
+        return render(request,'apptienda/producto_list.html',contexto)
     else:
         return HttpResponse('no se ingresaron patrones de búsqueda')
     

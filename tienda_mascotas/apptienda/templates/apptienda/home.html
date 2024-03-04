@@ -27,6 +27,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'acerca_de' %}">Acerca de</a></li>
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'clientes' %}">Clientes</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'mascotas' %}">Mascotas</a></li>
@@ -70,7 +71,7 @@
         </header>
         <!-- Content section 1-->
         <section id="scroll">
-            <div class="container px-5">
+            <div class="container px-5" style="padding:30px 0px">
                 <div class="row gx-5 align-items-center">
                     {% block contenido %}
                     {% endblock contenido %}

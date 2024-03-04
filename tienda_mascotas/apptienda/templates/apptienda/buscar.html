@@ -8,8 +8,8 @@
 
     <form action="{% url 'buscar_productos'  %}" method="get">
         {% csrf_token %}
-
-        <label for="buscar"> Buscar</label>
+        <p>Ingresa el nombre del producto que quieres buscar</p>
+        <label for="buscar"> Buscar producto</label>
         <input type="text" name="buscar" style="display: block;" id='buscar'>
 
         <input type="submit" value="Buscar" style="display: block;">
