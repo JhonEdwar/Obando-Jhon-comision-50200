@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">        
 
     </head>
-    <body id="page-top">
+    <body id="page-top" >
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
             <div class="container px-5">
@@ -54,16 +54,15 @@
             </div>
         </nav>
         <!-- Header-->
-        <header class="masthead text-center text-white">
-            <div class="masthead-content">
+        <header class="masthead text-center text-white" >
+            {% block title %}
+            <div class="masthead-content" style="height:100vh">
                 <div class="container px-5">
-                    {% block title %}
                     <h1 class="masthead-heading mb-0">Tienda de mascotas</h1>
-                    <h2 class="masthead-subheading mb-0">Lo mejor para tu amigo</h2>
-                    {% endblock title %}
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'productos' %}">ver más</a>
+                    <h2 class="masthead-subheading mb-0">Lo mejor para tu amigo</h2> 
                 </div>
             </div>
+            {% endblock title %}
             <div class="bg-circle-1 bg-circle"></div>
             <div class="bg-circle-2 bg-circle"></div>
             <div class="bg-circle-3 bg-circle"></div>

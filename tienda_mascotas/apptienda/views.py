@@ -83,12 +83,12 @@ class MedicamentoList(LoginRequiredMixin,ListView):
     
 class MedicamentoCreate(LoginRequiredMixin,CreateView):
     model=Medicamento
-    fields=['nombre_medicamento','disponibilidad']
+    fields=['nombre_medicamento','descripcion','tipo_de_animal','disponibilidad']
     success_url=reverse_lazy('medicamentos')
 
 class MedicamentoUpdate(LoginRequiredMixin,UpdateView):
     model=Medicamento
-    fields=['nombre_medicamento','disponibilidad']
+    fields=['nombre_medicamento','descripcion','tipo_de_animal','disponibilidad']
     success_url=reverse_lazy('medicamentos')
 
 class MedicamentoDelete(LoginRequiredMixin,DeleteView):

@@ -5,7 +5,10 @@ from django.contrib.auth.models import User
 class Cliente(models.Model):
     nombre=models.CharField(max_length=50)
     apellido= models.CharField(max_length=50)
-    mascota= models.CharField(max_length=50)
+    mascota=models.CharField(max_length=20, choices=[
+        ('Perro', 'Perro'),
+        ('Gato', 'Gato'),
+    ]) 
     telefono=models.IntegerField()
     email = models.EmailField()
     fecha_ult_compra = models.DateField()
@@ -15,7 +18,10 @@ class Cliente(models.Model):
 
 
 class Mascota(models.Model):
-    tipo = models.CharField(max_length=50)
+    tipo = models.CharField(max_length=20, choices=[
+        ('Perro', 'Perro'),
+        ('Gato', 'Gato'),
+    ]) 
     raza = models.CharField(max_length=50)
     nombre = models.CharField(max_length=50)
     edad= models.IntegerField()
@@ -27,7 +33,10 @@ class Mascota(models.Model):
 class Producto(models.Model):
     nombre_producto = models.CharField(max_length=50)
     categoria = models.CharField(max_length=50)
-    tipo_de_animal =models.CharField(max_length=50)
+    tipo_de_animal =models.CharField(max_length=20, choices=[
+        ('Perro', 'Perro'),
+        ('Gato', 'Gato'),
+    ]) 
     disponibilidad= models.BooleanField()
 
     def __str__(self):
@@ -36,6 +45,11 @@ class Producto(models.Model):
 
 class Medicamento(models.Model):
     nombre_medicamento = models.CharField(max_length=50)
+    descripcion = models.TextField(null=True, blank=True)
+    tipo_de_animal = models.CharField(max_length=20, choices=[
+        ('Perro', 'Perro'),
+        ('Gato', 'Gato'),
+    ])    
     disponibilidad= models.BooleanField()
 
     def __str__(self):

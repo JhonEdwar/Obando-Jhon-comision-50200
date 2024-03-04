@@ -6,13 +6,13 @@ from django.contrib.auth.forms import UserCreationForm
 class ClienteForms(forms.Form):
     nombre=forms.CharField(max_length=50, required=True)
     apellido=forms.CharField(max_length=50, required=True)
-    mascota=forms.CharField(max_length=50, required=True)
+    mascota=forms.ChoiceField(choices=[('Perro', 'Perro'), ('Gato', 'Gato')])
     telefono=forms.IntegerField( required=True)
     email=forms.EmailField(required=True)
     fecha_ult_compra=forms.DateField(required=False)
 
 class MascotaForms(forms.Form):
-    tipo=forms.CharField(max_length=50, required=True)
+    tipo=forms.ChoiceField(choices=[('Perro', 'Perro'), ('Gato', 'Gato')])
     raza=forms.CharField(max_length=50, required=True)
     nombre=forms.CharField(max_length=50, required=True)
     edad=forms.IntegerField(required=True)
@@ -20,13 +20,14 @@ class MascotaForms(forms.Form):
 class ProductoForms(forms.Form):
     nombre_producto=forms.CharField(max_length=50, required=True)
     categoria=forms.CharField(max_length=50, required=True)
-    tipo_de_animal=forms.CharField(max_length=50, required=True)
+    tipo_de_animal=forms.ChoiceField(choices=[('Perro', 'Perro'), ('Gato', 'Gato')])
     disponibilidad=forms.BooleanField(required=False)
 
 class MedicamentoForms(forms.Form):
     nombre_medicamento = forms.CharField(max_length=50)
+    descripcion = forms.Textarea()
+    tipo_de_animal = forms.ChoiceField(choices=[('Perro', 'Perro'), ('Gato', 'Gato')])
     disponibilidad= forms.BooleanField(required=False)
-
 
 
 class RegistroForm(UserCreationForm):
