@@ -7,13 +7,6 @@ urlpatterns = [
     path('', home, name='home'),
     path('acerca_de/', acerca_de, name='acerca_de'),
 
-    #____________________clientes
-
-    path('clientes/', ClientesList.as_view(), name='clientes'),
-    path('clientes_create/', ClientesCreate.as_view(), name='cliente_create'),
-    path('clientes_update/<int:pk>', ClientesUpdate.as_view(), name='cliente_update'),
-    path('clientes_delete/<int:pk>', ClientesDelete.as_view(), name='cliente_delete'),
-  
     #___________________mascotas
     path('mascotas/', MascotasList.as_view(), name='mascotas'),
     path('mascotas_create/', MascotasCreate.as_view(), name='mascota_create'),

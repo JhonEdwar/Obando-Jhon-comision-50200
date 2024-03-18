@@ -21,26 +21,6 @@ def acerca_de(request):
     return render(request,'apptienda/acerca_de.html')
 
 
-#_______________________________-clientes
-
-
-class ClientesList(LoginRequiredMixin,ListView):
-    model=Cliente
-    
-class ClientesCreate(LoginRequiredMixin,CreateView):
-    model=Cliente
-    fields=['nombre','apellido','mascota','telefono','email','fecha_ult_compra']
-    success_url=reverse_lazy('clientes')
-
-class ClientesUpdate(LoginRequiredMixin,UpdateView):
-    model=Cliente
-    fields=['nombre','apellido','mascota','telefono','email','fecha_ult_compra']
-    success_url=reverse_lazy('clientes')
-
-class ClientesDelete(LoginRequiredMixin,DeleteView):
-    model=Cliente
-    success_url=reverse_lazy('clientes')
-
 
 # -------------------------sección productos
 
